@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Alexia Moroianu">
+    <meta name="keywords" content="parfumuri, recenzii parfumuri, branduri parfumuri, specialiști parfumuri, ingrediente parfumuri, note parfumuri, longevitate parfumuri, proiecție parfumuri">
+    <meta name="description" content="Scentora este o platformă dedicată parfumurilor, oferind recenzii parfumuri, informații despre branduri de parfumuri, note parfumuri și specialiști parfumuri.">
+    <title>Scentora - Platformă dedicată parfumurilor</title>
+    <link rel="icon" type="image/png" href="./resurse/imagini/favicon/favicon-96x96.png ">
+    <meta name="msapplication-TileColor" content="#ffffff">
+</head>
+
+<body>
+    <header>
+        <h1>Scentora - Platformă dedicată parfumurilor</h1>
+        <p><q>Parfumurile sunt limbajul tăcut al personalității tale.</q> - Autor necunoscut</p>
+        <nav>
+            <ul>
+                <li><a href="#parfumuri">Parfumuri</a></li>
+                <li><a href="#branduri">Branduri</a></li>
+                <li><a href="#specialisti">Specialiști</a></li>
+                <li><a href="#recenzii">Recenzii</a></li>
+                <li><a href="#despre-noi">Despre Noi</a></li>
+                <li><a href="#cauta-parfum">Căutare Parfum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Secțiune cu link extern -->
+        <section id="link-extern">
+            <h2>Explorați mai multe despre parfumuri</h2>
+            <p>Aflați mai multe despre <strong>notele parfumurilor</strong> și cum influențează compoziția parfumurilor pe acest <a href="https://boisdejasmin.com/perfume-notes-index" target="_blank">site extern</a>.</p>
+        </section>
+
+        <section id="parfumuri">
+            <h2>Parfumuri Noi</h2>
+            <p>Descoperă cele mai noi <strong>parfumuri</strong> lansate pe piață. Dacă vrei să găsești cele mai populare sau <strong>parfumuri premium</strong>, Scentora îți oferă toate informațiile de care ai nevoie pentru a face alegerea perfectă. Află despre <strong>notele parfumurilor</strong>, <b>ingrediente parfumuri</b>, și <strong>longevitatea parfumurilor</strong>.</p>
+        </section>
+
+        
+        <section id="video">
+            <h2>Descoperă parfumul perfect</h2>
+            <p>Aflați mai multe despre alegerea unui parfum ideal și ce <strong>note parfumuri</strong> ar trebui să aibă acesta pentru a se potrivi personalității voastre.</p>
+            
+            <!-- Iframe care va conține sursa implicită -->
+            <iframe id="video-frame" width="560" height="315" 
+                    src="https://www.youtube.com/embed/ucB_nrPg4_o" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </section>
+
+        <!-- Secțiunea cu linkuri care se deschid într-un iframe -->
+        <section id="iframe-links">
+            <h2>Video Parfumuri</h2>
+            <p>Accesați următoarele videoclipuri pentru a învăța mai multe despre parfumerie:</p>
+            <!-- Linkuri care schimbă conținutul iframe-ului -->
+            <a href="https://www.youtube.com/embed/ucB_nrPg4_o" onclick="changeIframeSrc(this)">Video 1: Introducere în Parfumuri</a><br>
+            <a href="https://www.youtube.com/embed/WAsmGEb6d7A" onclick="changeIframeSrc(this)">Video 2: Ce greseli sa nu faci!</a>
+        </section>
+
+        <section id="branduri">
+            <h2>Branduri</h2>
+            <p>Aflați mai multe despre <strong>brandurile de parfumuri</strong>, fiecare cu propriile <strong>note parfumuri</strong> și <strong>ingrediente parfumuri</strong> care le fac unice. Explorează istoria fiecărui brand și parfumul lor reprezentativ.</p>
+        </section>
+
+        <section id="specialisti">
+            <h2>Specialiști</h2>
+            <p>Descoperă <strong>specialiști parfumuri</strong> care au creat unele dintre cele mai populare parfumuri. Învață despre tehnicile lor de combinare a notelor și ingredientelor pentru a crea parfumuri unice.</p>
+        </section>
+
+        <section id="recenzii">
+            <h2>Recenzii</h2>
+            <p>Vezi <strong>recenziile utilizatorilor despre parfumuri</strong>. Află ce părere au aceștia despre longevitatea și <strong>proiecția parfumurilor</strong> pe care le-au testat.</p>
+        </section>
+
+        <section id="despre-noi">
+            <h2>Despre Noi</h2>
+            <p>Scentora este dedicată iubitorilor de <strong>parfumuri</strong>, oferind o platformă unde poți explora parfumuri, <strong>recenzii parfumuri</strong>, și <strong>branduri parfumuri</strong> celebre.</p>
+        </section>
+
+        <section id="cauta-parfum">
+            <h2>Căutare Parfum</h2>
+            <p>Căută <strong>parfumurile</strong> dorite pe baza <strong>ingredientelor parfumuri</strong>, <strong>notelor parfumuri</strong> sau <strong>brandurilor parfumuri</strong>. Utilizați funcțiile avansate de căutare pentru a găsi parfumul perfect pentru tine.</p>
+        </section>
+
+        <!-- Secțiunea Imagine cu descriere -->
+        <section id="imagine">
+            <h2>Imagine cu Descriere</h2>
+            <figure>
+                <picture>
+                    <source srcset="./resurse/imagini/notes_wheel_phone.jpg" media="(max-width: 600px)">
+                    <source srcset="./resurse/imagini/pnotes_wheel_tablet.jpg" media="(max-width: 1024px)">
+                    <img src="./resurse/imagini/notes_wheel_desktop.jpg" alt="Roata notelor de parfumuri, cu diferite note de parfum">
+                </picture>
+                <figcaption>Roata notelor - un instrument grafic folosit pentru a reprezenta diferitele note de parfum (de top, de mijloc și de bază) într-o formă circulară, ilustrând cum se combină și evoluează aceste note într-un parfum.</figcaption>
+            </figure>
+        </section>
+
+        <!-- Secțiunea locației facultății -->
+        <section id="locatie">
+            <h2>Locația Facultății</h2>
+            <p>Vizualizați locația Facultății de Matematică și Informatică a Universității din București pe Google Maps: 
+                <a href="https://www.google.com/maps/place/Facultatea+de+Matematic%C4%83+%C8%99i+Informatic%C4%83/@44.435112,26.0992923,17z/data=!4m6!3m5!1s0x40b1ff472f47f047:0x493984726f0235f9!8m2!3d44.4355355!4d26.0995867!16s%2Fg%2F1td63tdh?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Facultatea de Matematică și Informatică</a></p>
+             
+
+            <!-- Iframe pentru locația facultății -->
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+                            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=facultatea%20de%20matematica%20si%20informatica&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                </div>
+            </div>
+
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    width: 600px;
+                    height: 400px;
+                }
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none!important;
+                    width: 600px;
+                    height: 400px;
+                }
+                .gmap_iframe {
+                    width: 600px!important;
+                    height: 400px!important;
+                }
+            </style>
+        </section>
+
+        <!-- Întrebări frecvente -->
+        <section id="intrebari">
+            <h2>Întrebări frecvente</h2>
+            <details>
+                <summary>Întrebare 1: Cum funcționează platforma?</summary>
+                <p>Răspuns: Platforma Scentora permite utilizatorilor să exploreze <strong>parfumuri</strong>, să citească <strong>recenzii parfumuri</strong>, să caute <strong>parfumuri</strong> după ingrediente și note și să lase propriile recenzii. Este o platformă interactivă pentru iubitorii de <strong>parfumuri</strong>.</p>
+            </details>
+
+            <details>
+                <summary>Întrebare 2: Cum pot lăsa o recenzie?</summary>
+                <p>Răspuns: După ce v-ați înregistrat pe platformă, navigați la pagina parfumului dorit și adăugați recenzia în secțiunea "Recenzii". Alegeți numărul de stele și scrieți părerea voastră despre <strong>parfumuri</strong>.</p>
+            </details>
+
+            <details>
+                <summary>Întrebare 3: Cum pot căuta un parfum pe baza notelor?</summary>
+                <p>Răspuns: Pe pagina de căutare, puteți selecta <strong>notele dorite</strong> și platforma va afișa toate <strong>parfumurile</strong> care conțin acele note. De asemenea, aveți opțiunea de a căuta <strong>parfumuri</strong> pe baza notelor pe care nu le doriți.</p>
+            </details>
+        </section>
+
+        <!-- Link de download -->
+        <section id="download">
+            <h2>Descarcă Imaginea</h2>
+            <p>Pentru a descărca imaginea, faceți clic pe linkul de mai jos:</p>
+            <a href="./resurse/imagini/imagine_descarcat.jpg" download="parfumuri.jpg">Descarcă Parfumuri.jpg</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <address>
+            <p>Contactează-ne:</p>
+            <p>
+                Telefon: <a href="tel:+40772254462">+40 772 254 462</a>
+                WhatsApp: <a href="https://wa.me/40772254462?text=Salut,%20am%20întrebări%20despre%20parfumuri!" target="_blank">WhatsApp</a><br>
+                E-mail: <a href="mailto:contact@scentora.com">Email: contact@scentora.com</a><br>
+            </p>
+           
+            <a href="https://www.google.com/maps?q=Facultatea+de+Matematica+si+Informatica" target="_blank">Facultatea de Matematica si Informatica</a><br>
+          
+        </address>
+        <a href="#top" style="color: blue; text-decoration: underline;">Înapoi la începutul paginii</a><br>
+        <small>&copy; <time datetime="2025-03-09">2025</time> Scentora. Toate drepturile rezervate.</small>
+    </footer>
+</body>
+</html>
