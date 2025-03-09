@@ -42,9 +42,9 @@
         <section id="video">
             <h2>Descoperă parfumul perfect</h2>
             <p>Aflați mai multe despre alegerea unui parfum ideal și ce <strong>note parfumuri</strong> ar trebui să aibă acesta pentru a se potrivi personalității voastre.</p>
-            
+
             <!-- Iframe care va conține sursa implicită -->
-            <iframe id="video-frame" width="560" height="315" 
+            <iframe name="ifr-video" width="560" height="315" 
                     src="https://www.youtube.com/embed/ucB_nrPg4_o" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe>
@@ -55,8 +55,8 @@
             <h2>Video Parfumuri</h2>
             <p>Accesați următoarele videoclipuri pentru a învăța mai multe despre parfumerie:</p>
             <!-- Linkuri care schimbă conținutul iframe-ului -->
-            <a href="https://www.youtube.com/embed/ucB_nrPg4_o" onclick="changeIframeSrc(this)">Video 1: Introducere în Parfumuri</a><br>
-            <a href="https://www.youtube.com/embed/WAsmGEb6d7A" onclick="changeIframeSrc(this)">Video 2: Ce greseli sa nu faci!</a>
+            <a href="https://www.youtube.com/embed/ucB_nrPg4_o" target="ifr-video">Video 1: Introducere în Parfumuri</a><br>
+            <a href="https://www.youtube.com/embed/vXoUXAsOCnk" target="ifr-video">Video 2: Mituri despre Parfumuri</a>
         </section>
 
         <section id="branduri">
@@ -104,32 +104,10 @@
                 <a href="https://www.google.com/maps/place/Facultatea+de+Matematic%C4%83+%C8%99i+Informatic%C4%83/@44.435112,26.0992923,17z/data=!4m6!3m5!1s0x40b1ff472f47f047:0x493984726f0235f9!8m2!3d44.4355355!4d26.0995867!16s%2Fg%2F1td63tdh?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Facultatea de Matematică și Informatică</a></p>
              
 
-            <!-- Iframe pentru locația facultății:am folosit embedmymap -->
-            <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-                            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=facultatea%20de%20matematica%20si%20informatica&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                </div>
-            </div>
+                <!-- Iframe pentru locația facultății -->
+    <iframe src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Facultatea%20de%20Matematica%20si%20Informatică%20Bucuresti&t=&z=14&ie=UTF8&iwloc=B&output=embed" 
+    width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
-            <style>
-                .mapouter {
-                    position: relative;
-                    text-align: right;
-                    width: 600px;
-                    height: 400px;
-                }
-                .gmap_canvas {
-                    overflow: hidden;
-                    background: none!important;
-                    width: 600px;
-                    height: 400px;
-                }
-                .gmap_iframe {
-                    width: 600px!important;
-                    height: 400px!important;
-                }
-            </style>
         </section>
 
         <!-- Întrebări frecvente -->
