@@ -7,6 +7,8 @@
     <meta name="description" content="Scentora este o platformă dedicată parfumurilor, oferind recenzii parfumuri, informații despre branduri de parfumuri, note parfumuri și specialiști parfumuri.">
     <title>Scentora - Platformă dedicată parfumurilor</title>
     <link rel="icon" type="image/png" href="./resurse/imagini/favicon/favicon-96x96.png ">
+    <!-- Link fisier CSS -->
+    <link rel="stylesheet" href="C:\Users\tncga\Desktop\proiect tehnici web\css\general.css">
     <meta name="msapplication-TileColor" content="#ffffff">
 </head>
 
@@ -43,21 +45,19 @@
             <h2>Descoperă parfumul perfect</h2>
             <p>Aflați mai multe despre alegerea unui parfum ideal și ce <strong>note parfumuri</strong> ar trebui să aibă acesta pentru a se potrivi personalității voastre.</p>
 
-            <!-- Iframe care va conține sursa implicită -->
-            <iframe name="ifr-video" width="560" height="315" 
-                    src="https://www.youtube.com/embed/ucB_nrPg4_o" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-        </section>
+           <!-- Secțiunea cu linkuri care se deschid într-un iframe -->
+<section id="iframe-links">
+    <h2>Video Parfumuri</h2>
+    <p>Accesați următoarele videoclipuri pentru a învăța mai multe despre parfumerie:</p>
+    <!-- Linkuri care schimbă conținutul iframe-ului -->
+    <a href="https://www.youtube.com/embed/ucB_nrPg4_o" target="ifr-video">Video 1: Introducere în Parfumuri</a><br>
+    <a href="https://www.youtube.com/embed/vXoUXAsOCnk" target="ifr-video">Video 2: Mituri despre Parfumuri</a>
 
-        <!-- Secțiunea cu linkuri care se deschid într-un iframe -->
-        <section id="iframe-links">
-            <h2>Video Parfumuri</h2>
-            <p>Accesați următoarele videoclipuri pentru a învăța mai multe despre parfumerie:</p>
-            <!-- Linkuri care schimbă conținutul iframe-ului -->
-            <a href="https://www.youtube.com/embed/ucB_nrPg4_o" target="ifr-video">Video 1: Introducere în Parfumuri</a><br>
-            <a href="https://www.youtube.com/embed/vXoUXAsOCnk" target="ifr-video">Video 2: Mituri despre Parfumuri</a>
-        </section>
+    <!-- Iframe care va conține sursa implicită -->
+    <iframe name="ifr-video" width="560" height="315" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+</section>
 
         <section id="branduri">
             <h2>Branduri</h2>
@@ -150,8 +150,10 @@
             <a href="https://www.google.com/maps?q=Facultatea+de+Matematica+si+Informatica" target="_blank">Facultatea de Matematica si Informatica</a><br>
           
         </address>
+
         <a href="#top" style="color: blue; text-decoration: underline;">Înapoi la începutul paginii</a><br>
-        <small>&copy; <time datetime="2025-03-09">2025</time> Scentora. Toate drepturile rezervate.</small>
+        
+        <small>&copy; <time datetime="2025-03-09" style="font-weight: normal; font-style: italic; color: black;">2025</time> Scentora. Toate drepturile rezervate.</small>
     </footer>
 </body>
 </html>
