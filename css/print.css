@@ -1,0 +1,131 @@
+/* Eliminare box-shadow, border-radius, padding speciale */
+header,
+nav,
+nav ul,
+nav li,
+nav a {
+  all: unset;
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+/* Eliminare orice efect de umbră sau colțuri rotunjite */
+header,
+nav,
+nav * {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Eliminare iconițe din font awesome */
+nav i,
+nav .imag-icon {
+  display: none !important;
+}
+
+
+
+
+
+/* Margini față-verso pentru paginile printate */
+@page :left {
+    margin-left: 2cm;
+    margin-right: 1cm;
+  }
+  
+  @page :right {
+    margin-left: 1cm;
+    margin-right: 2cm;
+  }
+  
+  @media print {
+    /* Ascundere media și elemente dependente */
+    img,
+    video,
+    iframe,
+    figcaption,
+    .link-sus-pagina,
+    #link-top {
+      display: none !important;
+    }
+  
+    /* Gridul devine block */
+    #grid-pagina {
+      display: block !important;
+    }
+  
+    /* Linkurile ca text normal */
+    a {
+      color: black !important;
+      text-decoration: none !important;
+    }
+  
+    /* Titlul centrat */
+    h1 {
+      text-align: center;
+    }
+  
+    /* Meniu sub titlu, ca listă */
+    nav {
+      display: block !important;
+     
+    }
+  
+    header {
+        page-break-after: always;
+      }
+
+    nav ul {
+      list-style-type: disc;
+      padding-left: 2em;
+      display: block !important;
+    }
+  
+    nav ul li {
+      display: list-item !important;
+    }
+  
+    nav ul ul {
+      list-style-type: circle;
+      margin-left: 2em;
+    }
+  
+    /* Banner afișat în colțul din dreapta sus */
+    .banner-print {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 3px double black;
+      padding: 1em;
+      width: 50%;
+      background-color: white;
+      font-weight: bold;
+    }
+  
+    /* Page break înainte de footer */
+    footer {
+      page-break-before: always;
+    }
+  
+    /* Watermark pe fiecare pagină */
+    .watermark {
+      display: block;
+      position: fixed;
+      width: 60%;
+      height: 10%;
+      top: 45%;
+      left: 20%;
+      text-align: center;
+      font-size: 2em;
+      color: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+      pointer-events: none;
+    }
+  }
+  

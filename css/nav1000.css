@@ -1,0 +1,19 @@
+ul.meniu li div.imag-icon{
+    display: block;
+}
+
+ul.meniu li div.text-icon{
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    html {
+      font-size: 0.8em; /* sau 14px, dacă preferi */
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    :root {
+      --inaltime-meniu: 30px;
+      --latime-buton: 110px;
+    }
+  }
