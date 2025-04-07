@@ -1,0 +1,270 @@
+:root {
+    --culoare-fundal: #FDF6E4;     
+    --culoare-accent: #447EF2;     
+    --culoare-header: #915362;     
+    --culoare-footer: #021859;     
+    --culoare-sectiuni: #91615D;   
+    --font-size-text: 1.2rem;
+    --padding-text: 30px;
+}
+
+
+/* 🔢 TASK 1 - LAYOUT GENERAL - FONT ȘI DIMENSIUNI */
+html {
+    font-size: 16px;
+    transition: font-size 0.5s ease;
+}
+body {
+    font-family: 'Playfair Display', serif;
+    --spatiere-pagina: 80px;
+
+   
+    --culoare-background: var(--culoare-fundal);
+    --culoare-text: var(--culoare-footer);
+    --culoare-border: var(--culoare-accent);
+    --culoare-highlight: var(--culoare-header);
+    --culoare-sectiune: var(--culoare-sectiuni);
+}
+main {
+    padding-left: var(--spatiere-pagina);
+    padding-right: var(--spatiere-pagina);
+}
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+p, li, td, th, a, summary, details, section {
+    font-size: var(--font-size-text);
+    line-height: 1.5;
+}
+
+/* 🔢 TASK 2 - DESIGN RUDIMENTAR - HEADER ȘI FOOTER CU STILIZARE */
+header, footer {
+    border: 2px solid var(--culoare-accent);
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+header {
+    background-color: var(--culoare-header);
+    color: black;
+}
+footer {
+    background-color: var(--culoare-footer);
+    color: white;
+}
+
+/* 🔢 TASK 3 - GRID LAYOUT STRUCTURA PAGINII */
+#grid-pagina {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "header header header header"
+        "one one one one"
+        "one one one one"
+        "one one one one"
+        "one one one one"
+        "three two two four"
+        "three two two four"
+        "five two two four"
+        "five two two four"
+        "five six six seven"
+        "five six six seven"
+        "eight eight eight eight"
+        "eight eight eight eight"
+        "footer footer footer footer"
+        "footer footer footer footer";
+    gap: 30px;
+    padding: 40px;
+}
+#grid-pagina > * {
+    border: 1px solid var(--culoare-accent);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--padding-text);
+    box-sizing: border-box;
+}
+#grid-pagina > section {
+    background-color: var(--culoare-fundal);
+}
+header { grid-area: header; }
+#zona1 { grid-area: one; }
+#zona2 { grid-area: two; }
+#zona3 { grid-area: three; }
+#zona4 { grid-area: four; }
+#zona5 { grid-area: five; }
+#zona6 { grid-area: six; }
+#zona7 { grid-area: seven; }
+#zona8 { grid-area: eight; }
+footer { grid-area: footer; }
+
+/* 🔢 TASK 4 - MEDIA RESPONSIVE - IMAGINI ȘI VIDEO */
+img {
+    width: 100%;
+    max-width: 600px;
+    min-width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+iframe, video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 🔢 TASK 5 - TABURI CU IFRAME - YOUTUBE */
+.taburi-iframe > a {
+    display: block;
+    width: 230px;
+    height: 70px;
+    border: 1px solid var(--culoare-footer);
+    background-color: var(--culoare-accent);
+    text-align: center;
+}
+.taburi-iframe {
+    display: flex;
+    justify-content: center;
+}
+.container-iframe {
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.container-iframe > iframe {
+    width: 100%;
+    height: 400px;
+}
+
+/* 🔢 TASK 6 - STILIZARE TABEL */
+.tabel-container {
+    max-width: 100%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 5px double var(--culoare-sectiuni);
+    text-align: left;
+    font-family: Arial, sans-serif;
+    background-color: var(--culoare-fundal);
+}
+caption {
+    caption-side: bottom;
+    font-weight: bold;
+    padding: 10px;
+}
+th, td {
+    border: 1px solid var(--culoare-sectiuni);
+    padding: 8px;
+    transition: all 0.75s ease;
+}
+tbody tr:hover td {
+    background-color: var(--culoare-accent);
+    color: var(--culoare-fundal);
+    border-width: 5px;
+}
+tbody td:nth-child(odd),
+thead th:nth-child(odd),
+tfoot td:nth-child(odd) {
+    color: var(--culoare-footer);
+}
+tbody td:nth-child(even),
+thead th:nth-child(even),
+tfoot td:nth-child(even) {
+    color: var(--culoare-header);
+}
+
+/* 🔢 TASK 7 - MEDIA QUERIES - RESPONSIVE DESIGN */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 14px;
+        transition: font-size 0.5s ease;
+    }
+    body {
+        --spatiere-pagina: 50px;
+    }
+    .tabel-container {
+        overflow-x: auto;
+    }
+    .tabel-container table {
+        min-width: 900px;
+    }
+    img, video {
+        max-width: 700px;
+        min-width: 200px;
+    }
+    iframe {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    #grid-pagina {
+        gap: 15px;
+    }
+    :root {
+        --padding-text: 12px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #grid-pagina {
+        display: block;
+        gap: 10px;
+    }
+    .tabel-container {
+        overflow-x: auto;
+    }
+    html {
+        font-size: 10px;
+        transition: font-size 0.5s ease;
+    }
+    body {
+        --spatiere-pagina: 20px;
+    }
+    img, iframe, video {
+        max-width: 300px;
+        min-width: 150px;
+    }
+    :root {
+        --padding-text: 8px;
+    }
+}
+
+/* 🔢 TASK 8 - LINK SUS - BUTON ROTUND CU SĂGEATĂ STATICĂ */
+#link-top {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    width: 6rem;
+    height: 6rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#cerc {
+    width: 100%;
+    height: 100%;
+    border: 5px dashed var(--culoare-accent);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--culoare-sectiuni), var(--culoare-fundal) 50%, var(--culoare-sectiuni));
+    transition: transform 500ms ease, opacity 500ms ease;
+    opacity: 0.5;
+    box-sizing: border-box;
+}
+#link-top:hover #cerc {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+#triunghi {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--culoare-footer);
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+}
