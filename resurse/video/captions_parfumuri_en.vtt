@@ -1,0 +1,17 @@
+WEBVTT - Some title
+
+STYLE
+::cue {
+  background-color: white;
+  color: #333;
+  text-align: center;
+}
+
+00:00.000 --> 00:05.000 line:0 position:50%
+Spray the perfume on a testing strip for a first impression.
+
+00:05.000 --> 00:10.000 line:-1 position:50%
+Wait a few <i>minutes</i> for the heart notes to develop.
+
+00:10.000 --> 00:15.000 line:0 position:50%
+A good perfume <c.evident>reflects your personality</c.evident>.

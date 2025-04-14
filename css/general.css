@@ -320,3 +320,13 @@ ul.meniu li ul li a {
 .watermark {
     display: none;
   }
+
+
+
+  #ip-afisat {
+    display: block !important;
+    position: relative;
+    color: black;
+    font-weight: bold;
+  }
+  

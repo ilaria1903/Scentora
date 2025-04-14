@@ -123,6 +123,12 @@
                 <figcaption>Roata notelor - un instrument grafic folosit pentru a reprezenta diferitele note de parfum (de top, de mijloc și de bază) într-o formă circulară, ilustrând cum se combină și evoluează aceste note într-un parfum.</figcaption>
             </figure>
         </section>
+
+        <section id="zona-video">
+          <h2>Video: Cum testezi un parfum</h2>
+          <iframe src="resurse/video/video.html" width="100%" height="400" style="border:none;"></iframe>
+        </section>
+
         </section>
 
         <section id="zona2">
@@ -276,6 +282,25 @@
 
   <!-- Watermark-ul apare doar la printare -->
   <div class="watermark">Moroianu<br>Alexia</div>
+
+  <script>
+    const checkbox = document.getElementById("ch-menu");
+    const items = document.querySelectorAll("ul.meniu li");
+  
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        items.forEach(li => {
+          li.classList.remove("animate");
+          const link = li.querySelector("a");
+          link?.classList.remove("animate-text");
+          void li.offsetWidth; // retrigger
+          li.classList.add("animate");
+          link?.classList.add("animate-text");
+        });
+      }
+    });
+  </script>
+
 
 </body>
 </html>

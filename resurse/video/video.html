@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Testare Parfumuri</title>
+    <link rel="stylesheet" href="/css/general.css">
+  </head>
+  <body>
+
+    <!-- Videoclipul va avea o imagine poster (atributul poster) relevantă pentru conținut -->
+    <!-- Videoclipul va avea și elementele de control afișate implicit -->
+    <!-- Videoclipul va avea preîncărcate metainformațiile (preload) -->
+    <!-- Videoclipul trebuie să se afișeze frumos pe ecran mic, deci va avea în css lățimea setată în procentaje, cât și o lățime minimă și maximă, ca să nu devină greu de urmărit pe ecrane mici sau foarte mari -->
+    <video controls preload="metadata" poster="/resurse/imagini/imagine_descarcat.jpg" style="width:80%; min-width:300px; max-width:900px; height:auto;">
+
+      <!-- Videoclipul va avea minim 2 surse: același videoclip dar în formate diferite -->
+      <source src="video_parfum.mp4" type="video/mp4">
+      <source src="video_parfum.ogv" type="video/ogv">
+
+      <!-- Videoclipul va avea mai multe trackuri (minim 2), în limbi diferite (de exemplu română și engleză) cu atributele setate conform limbii -->
+      <!-- Trackul în limba română va fi cel default -->
+   
+      <track default src="captions_parfumuri.vtt" kind="captions" srclang="ro" label="română" />
+      <track src="captions_parfumuri_en.vtt" kind="captions" srclang="en" label="engleză" />
+
+      
+    </video>
+
+  </body>
+</html>

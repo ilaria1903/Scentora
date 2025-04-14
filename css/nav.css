@@ -1,209 +1,216 @@
 :root {
-    --culoare-deschisa: #FDF6E4;
-    --culoare-inchisa: #915362;
-    --culoare-hover-border: #F6E0C5;
-    --inaltime-meniu: 40px;
-    --latime-buton: 140px;
- 
-  }
-  
-  #hamburger, #ch-menu {
-    display: none;
-  }
-  
-  nav {
-    background-color: var(--culoare-inchisa);
-    height: var(--inaltime-meniu);
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    line-height: var(--inaltime-meniu);
-    z-index: 30;
-    box-sizing: border-box;
-    /* REZOLVARE */
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-  }
-  
-  ul.meniu,
-  ul.meniu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  ul.meniu {
-    gap: 10px;
-    display: flex;
-    justify-content: center; /* centrează orizontal */
-    align-items: center;
-    padding: 0;
-    margin: 0;
-  }
-  
-  ul.meniu li {
-    width: var(--latime-buton);
-    min-width: var(--latime-buton);
-    max-width: var(--latime-buton);
-    height: var(--inaltime-meniu);
-    box-sizing: border-box;
-    position: relative;
-    text-align: center;
-    line-height: var(--inaltime-meniu);
-    font-weight: bold;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-    overflow: visible; /* ⛔ previne scroll nedorit */
-    white-space: nowrap; /* ⛔ previne trecerea pe rând nou */
-    text-overflow: ellipsis; /* ✅ dacă textul e prea lung, apare ... */
-    display: flex; /* ✅ pentru aliniere corectă icon + text */
-    align-items: center;
-    justify-content: center;
-  }
-  
-  ul.meniu li > .text-icon {
-    position: relative;
-    z-index: 1;
-  }
-  
-  ul.meniu li::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(253, 246, 228, 0.3);
-    top: 0;
-    left: 0;
-    transform: scaleY(0);
-    transition: transform 0.5s ease;
-    transform-origin: center;
-    border: 2px solid var(--culoare-hover-border);
-    box-shadow: inset 0 0 10px var(--culoare-hover-border);
-    z-index: 0;
-  }
-  
-  ul.meniu li:hover::before {
-    transform: scaleY(1);
-  }
-  
-  ul.meniu li > a,
-  ul.meniu li > div {
-    color: white;
-    text-decoration: none;
-    display: block;
-    height: 100%;
-    transition: color 0.5s ease;
-    position: relative;
-    z-index: 2;
-  }
-  
-  ul.meniu li .imag-icon {
-    display: none;
-  }
-  
-  ul.meniu li:hover > a,
-  ul.meniu li:hover > div {
-    color: black;
-  }
-  
-  /* SUBMENIU */
-  ul.meniu li ul {
-    transform: scale(0);
-    transform-origin: top left; /* ✅ colțul stânga-sus */
+  --culoare-deschisa: #FDF6E4;
+  --culoare-inchisa: #915362;
+  --culoare-hover-border: #F6E0C5;
+  --inaltime-meniu: 40px;
+  --latime-buton: 140px;
+}
+
+/* Ascunde checkbox-ul si hamburgerul pentru ecran mare */
+#hamburger, #ch-menu {
+  display: none;
+}
+
+nav {
+  background-color: var(--culoare-inchisa);
+  height: var(--inaltime-meniu);
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  line-height: var(--inaltime-meniu);
+  z-index: 30;
+  box-sizing: border-box;
+  overflow: visible; /* permite afisarea corecta a submeniurilor */
+  padding: 0;
+  margin: 0;
+}
+
+ul.meniu,
+ul.meniu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.meniu {
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+ul.meniu li {
+  width: var(--latime-buton);
+  min-width: var(--latime-buton);
+  max-width: var(--latime-buton);
+  height: var(--inaltime-meniu);
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  line-height: var(--inaltime-meniu);
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Textul si eventual icon-ul sunt pe stratul superior fata de pseudo-elemente */
+ul.meniu li > .text-icon {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cerinta 1: Dreptunghi transparent suprapus, scalat vertical cu border si box-shadow */
+ul.meniu li::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(253, 246, 228, 0.3); /* fundal semitransparent */
+  top: 0;
+  left: 0;
+  transform: scaleY(0); /* invizibil initial pe verticala */
+  transition: transform 0.5s ease; /* animatie de scalare */
+  transform-origin: center; /* scalare din centru */
+  border: 2px solid var(--culoare-hover-border); /* border deschis */
+  box-shadow: inset 0 0 10px var(--culoare-hover-border); /* efect de contur cu gradient */
+  z-index: 0; /* plasat sub text */
+}
+
+/* Activare scalare la hover - dreptunghiul acopera butonul */
+ul.meniu li:hover::before {
+  transform: scaleY(1);
+}
+
+/* Stil pentru linkurile din meniu */
+ul.meniu li > a,
+ul.meniu li > div {
+  color: white;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  transition: color 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Iconul text este ascuns pe ecran mare */
+ul.meniu li .imag-icon {
+  display: none;
+}
+
+/* La hover pe buton, textul devine negru */
+ul.meniu li:hover > a,
+ul.meniu li:hover > div {
+  color: black;
+}
+
+/* Cerinta 2: Submeniul este scalat de la 0 si apare cu tranzitie */
+ul.meniu li ul {
+  transform: scale(0); /* invizibil initial */
+  transform-origin: top left; /* scalare din coltul stanga sus */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: var(--latime-buton);
+  background-color: var(--culoare-deschisa);
+  border: 1px solid var(--culoare-inchisa);
+  z-index: 999;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 2px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* tranzitie pe scalare si opacitate */
+  pointer-events: none;
+}
+
+/* Submeniul devine vizibil cu animatie de scalare */
+ul.meniu li:hover ul {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Stil pentru fiecare optiune din submeniu */
+ul.meniu li ul li {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: var(--inaltime-meniu);
+  display: block;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--culoare-inchisa);
+}
+
+/* Stilul pentru linkurile din submeniu */
+ul.meniu li ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  line-height: var(--inaltime-meniu);
+}
+
+/* La hover pe submeniu, fundal inchis si text alb */
+ul.meniu li ul li a:hover {
+  background-color: var(--culoare-inchisa);
+  color: white;
+}
+
+/* Cerinta 3: Subliniere dubla animata cu latime mare */
+ul.meniu li ul li a::before,
+ul.meniu li ul li a::after {
+  content: "";
+  position: absolute;
+  left: 10%; /* inceputul liniei */
+  width: 80%; /* latime mare pentru linie groasa vizual */
+  height: 2px; /* grosime linie */
+  background-color: black;
+  transition: transform 0.3s ease;
+  transform: scaleX(0); /* initial invizibil pe orizontala */
+}
+
+/* Pozitia fiecarei linii fata de baza */
+ul.meniu li ul li a::before {
+  bottom: 6px;
+}
+ul.meniu li ul li a::after {
+  bottom: 2px;
+}
+
+/* La hover, se afiseaza linia dubla prin scalare */
+ul.meniu li ul li a:hover::before,
+ul.meniu li ul li a:hover::after {
+  transform: scaleX(1); /* se extinde pe latime */
+}
+
+/* Animatie generica pentru sageti (pentru versiunea responsive, nu folosita in ecran mare) */
+@keyframes aparitieSageata {
+  0% {
     opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: var(--latime-buton);
-    background-color: var(--culoare-deschisa);
-    border: 1px solid var(--culoare-inchisa);
-    z-index: 999;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    margin-top: 2px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    pointer-events: none;
+    transform: translateX(-50%);
+    clip-path: polygon(0 50%, 0 50%, 0 50%, 0 50%, 0 50%);
   }
-  
-  ul.meniu li:hover ul {
-    transform: scale(1);             /* ✅ scalare completă */
+  100% {
     opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+    transform: translateX(0);
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
   }
-  ul.meniu li ul li {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: var(--inaltime-meniu);
-    display: block;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--culoare-inchisa);
-  }
-  
-  ul.meniu li ul li:last-child {
-    border-bottom: none;
-  }
-  
-  ul.meniu li ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    padding: 0;
-    line-height: var(--inaltime-meniu);
-  }
-  
-  /* Hover submeniu */
-  ul.meniu li ul li a:hover {
-    background-color: var(--culoare-inchisa);
-    color: white;
-  }
-  
-  /* Subliniere dublă animată */
-  ul.meniu li ul li a::before,
-  ul.meniu li ul li a::after {
-    content: "";
-    position: absolute;
-    left: 10%;
-    width: 80%;
-    height: 2px;
-    background-color: black;
-    transition: transform 0.3s ease;
-    transform: scaleX(0);
-  }
-  
-  ul.meniu li ul li a::before {
-    bottom: 6px;
-  }
-  
-  ul.meniu li ul li a::after {
-    bottom: 2px;
-  }
-  
-  ul.meniu li ul li a:hover::before,
-  ul.meniu li ul li a:hover::after {
-    transform: scaleX(1);
-  }
-  
-  @keyframes aparitieSageata {
-    0% {
-      opacity: 0;
-      transform: translateX(-50%);
-      clip-path: polygon(0 50%, 0 50%, 0 50%, 0 50%, 0 50%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-      clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
-    }
-  }
+}

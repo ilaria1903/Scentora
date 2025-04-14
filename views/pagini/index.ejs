@@ -6,6 +6,8 @@
     <meta name="keywords" content="parfumuri, recenzii parfumuri, branduri parfumuri, specialiști parfumuri, ingrediente parfumuri, note parfumuri, longevitate parfumuri, proiecție parfumuri">
     <meta name="description" content="Scentora este o platformă dedicată parfumurilor, oferind recenzii parfumuri, informații despre branduri de parfumuri, note parfumuri și specialiști parfumuri.">
     <title>Scentora - Platformă dedicată parfumurilor</title>
+    <p id="ip-afisat"><b>IP-ul tău: </b><%= ip %></p>
+
 
     <%- include("../fragmente/head.ejs")%>
    
@@ -16,7 +18,8 @@
 
     <main>
         <div id="grid-pagina">
-            
+         
+            <button type="button" class="btn btn-primary btn-lg">Stil-1-mare</button>
             
     <%- include("../fragmente/header.ejs")%>
             <section id="zona1">
@@ -66,6 +69,12 @@
                 <figcaption>Roata notelor - un instrument grafic folosit pentru a reprezenta diferitele note de parfum (de top, de mijloc și de bază) într-o formă circulară, ilustrând cum se combină și evoluează aceste note într-un parfum.</figcaption>
             </figure>
         </section>
+
+        <section id="zona-video">
+            <h2>Video: Cum testezi un parfum</h2>
+            <iframe src="resurse/video/video.html" width="100%" height="600" style="border:none;"></iframe>
+          </section>
+          
         </section>
 
         <section id="zona2">

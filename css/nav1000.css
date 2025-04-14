@@ -8,7 +8,7 @@ ul.meniu li div.text-icon{
 
 @media screen and (max-width: 1000px) {
     html {
-      font-size: 0.8em; /* sau 14px, dacă preferi */
+      font-size: 0.8em; 
     }
   }
   @media screen and (max-width: 1000px) {

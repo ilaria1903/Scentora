@@ -1,86 +1,93 @@
 @media screen and (max-width: 700px) {
-    nav {
-      height: auto;
-      overflow: visible;
-      position:relative;
-    }
-  
-    #hamburger {
-      display: block;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 999;
-      position: relative;
-    }
-  
-    #hamburger .fa-bars {
-      font-size: 30px;
-      color: white;
-    }
-  
-    #ch-menu {
-      display: none;
-    }
-  
-    ul.meniu {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0;
-      margin: 0;
-      background-color: var(--culoare-inchisa);
-      position: absolute;
-      width: 100%;
-      left: 0;
-      top: 100%;
-      z-index: 998;
-    }
-  
-    #ch-menu:checked + ul.meniu {
-      display: flex;
-    }
-  
-    ul.meniu li {
-      width: 100%;
-      opacity: 0;
-      transform: translateX(-50%);
-      background-color: var(--culoare-hover-border); /* culoare deschisă de contrast */
-      clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
-      animation: aparitieSageata 0.5s ease forwards;
-      margin-bottom: 5px;
-    }
-  
-    ul.meniu li a, ul.meniu li div {
-      display: block;
-      padding: 12px 20px;
-      font-size: 1rem;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  
-    ul.meniu li:hover {
-      background-color: var(--culoare-deschisa);
-    }
-  
-    /* Icon căsuță în locul textului pentru prima opțiune */
-    ul.meniu li:first-child .text-icon {
-      display: none;
-    }
-  
-    ul.meniu li:first-child .imag-icon {
-      display: inline;
-      font-size: 1.3rem;
-      padding-left: 20px;
-    }
-  
-    /* Tranziție pe fiecare opțiune */
-    #ch-menu:checked + ul.meniu li:nth-child(1) { animation-delay: 0.1s; }
-    #ch-menu:checked + ul.meniu li:nth-child(2) { animation-delay: 0.2s; }
-    #ch-menu:checked + ul.meniu li:nth-child(3) { animation-delay: 0.3s; }
-    #ch-menu:checked + ul.meniu li:nth-child(4) { animation-delay: 0.4s; }
-    #ch-menu:checked + ul.meniu li:nth-child(5) { animation-delay: 0.5s; }
-  
-   
+  /* Meniul devine adaptabil: nav devine mai inalt si permite continutul */
+  nav {
+    height: auto;
+    overflow: visible;
+    position: relative;
   }
-  
+
+  /* Afiseaza icon-ul hamburger pentru deschiderea meniului */
+  #hamburger {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 999;
+    position: relative;
+  }
+
+  /* Stilizeaza iconul hamburger */
+  #hamburger .fa-bars {
+    font-size: 30px;
+    color: white;
+  }
+
+  /* Ascunde checkbox-ul implicat in deschiderea meniului */
+  #ch-menu {
+    display: none;
+  }
+
+  /* Meniul principal devine vertical si ascuns initial */
+  ul.meniu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    background-color: var(--culoare-inchisa);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    z-index: 998;
+  }
+
+  /* Cand checkbox-ul e bifat, meniul devine vizibil */
+  #ch-menu:checked + ul.meniu {
+    display: flex;
+  }
+
+  /* Stil individual pentru fiecare optiune: sageata + animatie */
+  ul.meniu li {
+    width: 100%;
+    opacity: 0;
+    transform: translateX(-50%);
+    background-color: var(--culoare-hover-border); /* culoare de contrast deschisa */
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%); /* efect sageata */
+    animation: aparitieSageata 0.5s ease forwards;
+    margin-bottom: 5px;
+  }
+
+  /* Stil general text din meniu */
+  ul.meniu li a,
+  ul.meniu li div {
+    display: block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Hover pe optiune de meniu schimba fundalul */
+  ul.meniu li:hover {
+    background-color: var(--culoare-deschisa);
+  }
+
+  /* Cerinta: Prima optiune - ascunde textul si afiseaza iconul de casuta */
+  ul.meniu li:first-child .text-icon {
+    display: none;
+  }
+
+  ul.meniu li:first-child .imag-icon {
+    display: inline;
+    font-size: 1.3rem;
+    padding-left: 20px;
+  }
+
+  /* Cerinta: Tranzitie cu intarziere individuala pe fiecare optiune */
+  #ch-menu:checked + ul.meniu li:nth-child(1) { animation-delay: 0.1s; }
+  #ch-menu:checked + ul.meniu li:nth-child(2) { animation-delay: 0.2s; }
+  #ch-menu:checked + ul.meniu li:nth-child(3) { animation-delay: 0.3s; }
+  #ch-menu:checked + ul.meniu li:nth-child(4) { animation-delay: 0.4s; }
+  #ch-menu:checked + ul.meniu li:nth-child(5) { animation-delay: 0.5s; }
+}
