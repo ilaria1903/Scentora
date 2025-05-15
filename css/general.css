@@ -330,3 +330,81 @@ ul.meniu li ul li a {
     font-weight: bold;
   }
   
+
+
+  /*task 5 duotone*/
+
+  .zona-cu-duotone {
+    position: relative;
+    overflow: hidden;
+}
+
+.fundal-zona {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/resurse/imagini/task5_duotone.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: filter 0.8s ease;
+    z-index: 1;
+}
+
+/* Efect duotone cu before și after pe fundal */
+.fundal-zona::before,
+.fundal-zona::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.fundal-zona::before {
+    background-color: #447EF2;
+}
+
+.fundal-zona::after {
+    background-color: #915362;
+}
+
+/* Hover: doar fundalul devine gri */
+.zona-cu-duotone:hover .fundal-zona {
+    filter: grayscale(100%);
+}
+
+/* Conținutul normal deasupra */
+.continut-zona {
+    position: relative;
+    z-index: 2;
+    padding: 2rem; /* adaugi padding ca să nu stea lipit */
+}
+
+
+/*Task 5 hr */
+.linie-stilizata {
+    border: none;
+    height: 12px;
+    background: linear-gradient(
+        225deg,
+        transparent 0%,
+        transparent 5%,
+        var(--culoare-accent) 5%,
+        var(--culoare-accent) 20%,
+        transparent 20%,
+        transparent 25%,
+        var(--culoare-accent) 25%,
+        var(--culoare-accent) 75%,
+        transparent 75%,
+        transparent 80%,
+        var(--culoare-accent) 80%,
+        var(--culoare-accent) 95%,
+        transparent 95%,
+        transparent 100%
+    );
+}

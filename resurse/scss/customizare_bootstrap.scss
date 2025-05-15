@@ -1,0 +1,51 @@
+// custom.scss
+
+// 1. Setăm variabilele înainte de importul Bootstrap
+$primary: #447EF2; // culoare accent principală
+$secondary: #915362; // culoare header
+$body-bg: #FDF6E4; // fundalul paginii
+$body-color: #021859; // culoarea textului normal
+
+// Culori pentru alte teme
+$theme-colors: (
+  "primary": #447EF2,
+  "secondary": #915362,
+  "success": #91615D,
+  "info": #FDF6E4,
+  "light": #ffffff,
+  "dark": #021859
+);
+
+// Font implicit
+$font-family-sans-serif: 'Playfair Display', serif;
+
+// Dimensiuni heading-uri
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+// Border radius
+$border-radius: 1rem;
+$border-radius-lg: 1.5rem;
+$border-radius-sm: 0.5rem;
+
+// Alte variabile customizate
+$btn-font-weight: 600; // butoane mai bold
+$input-padding-y: 1rem; // padding pe verticală mai mare la inputuri
+
+// Dimensiuni pentru ecrane medii și mari (breakpoints)
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px, // breakpoint ecran mediu
+  lg: 992px, // breakpoint ecran mare
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// 2. Importăm Bootstrap după ce am definit variabilele
+@use "bootstrap/scss/bootstrap";
+

@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sharp = require("sharp");
+const sass=require("sass");
 //const pg=require("pg");
 
 //Postgres
@@ -31,7 +32,12 @@ app = express();
 app.set('trust proxy', true);
 
 // Cerință: Se va crea o variabilă globală numită obGlobal
-obGlobal = { obErori: null };
+obGlobal = { obErori: null,
+    folderScss:path.join(__dirname,"resurse/scss"),
+    folderCss:path.join(__dirname,"resurse/scss"),
+    folderBackup:path.join(__dirname, "backup")
+
+ };
 
 // Cerință: Vector cu numele folderelor generate de aplicație
 const paginiValide = ["index", "despre", "contact", "parfumuri", "recenzii", "branduri", "cautare"];
@@ -53,7 +59,66 @@ app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-// Cerință: Se va crea o funcție initErori care citește fișierul erori.json
+
+
+
+function compileazaScss(caleScss, caleCss){
+    console.log("Compilare SCSS pentru:", caleScss);
+    if(!caleCss){
+        let numeFisExt=path.basename(caleScss);
+        let numeFis=numeFisExt.split(".")[0];
+        caleCss=numeFis+".css";
+    }
+    
+    if (!path.isAbsolute(caleScss))
+        caleScss=path.join(obGlobal.folderScss,caleScss );
+    if (!path.isAbsolute(caleCss))
+        caleCss=path.join(obGlobal.folderCss,caleCss );
+
+    let caleBackup=path.join(obGlobal.folderBackup, "resurse/css");
+    if (!fs.existsSync(caleBackup)) {
+        fs.mkdirSync(caleBackup,{recursive:true});
+    }
+
+    let numeFisCss=path.basename(caleCss);
+    if (fs.existsSync(caleCss)){
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css",numeFisCss));
+    }
+    rez=sass.compile(caleScss, {"sourceMap":true, loadPaths: ["node_modules"]});
+    fs.writeFileSync(caleCss, rez.css);
+    console.log("Compilare SCSS reușită pentru:", caleCss);
+}
+
+//compileazaScss("a.scss");
+//vectorul de nume de fisiere
+vFisiere=fs.readdirSync(obGlobal.folderScss);
+for( let numeFis of vFisiere ){
+    //ne da extensia din numeFis
+    if (path.extname(numeFis)==".scss"){
+        compileazaScss(numeFis);
+    }
+}
+
+
+fs.watch(obGlobal.folderScss, function(eveniment, numeFis){
+    console.log(eveniment, numeFis);
+    if (numeFis && (eveniment=="change" || eveniment=="rename")){
+        let caleCompleta=path.join(obGlobal.folderScss, numeFis);
+        if (fs.existsSync(caleCompleta)){
+            compileazaScss(caleCompleta);
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+// Cerință t4: Se va crea o funcție initErori care citește fișierul erori.json
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname, "resurse/json/erori.json")).toString("utf-8");
     obGlobal.obErori = JSON.parse(continut);
@@ -67,7 +132,7 @@ function initErori() {
 }
 initErori();
 
-// Cerință: Se va crea o funcție de afișare a erorilor afișareEroare()
+// Cerință t4: Se va crea o funcție de afișare a erorilor afișareEroare()
 function afisareEroare(res, identificator, titlu, text, imagine) {
     let eroare = null;
     if (identificator !== undefined && identificator !== null) {
@@ -90,11 +155,11 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     }
 
     // Cerință: Se va folosi eroare.ejs pentru randarea paginii de eroare
-    res.render("pagini/eroare", {
-        titlu: titluCustom,
-        text: textCustom,
-        imagine: imagineCustom
-    });
+    res.locals.titlu = titluCustom;
+    res.locals.text = textCustom;
+    res.locals.imagine = imagineCustom;
+    
+    res.render("pagini/eroare");
 }
 
 // Cerință: Afișarea căii fișierului, folderului, etc.
@@ -107,7 +172,7 @@ app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
 });
 
-// Cerință: Prima pagină (index) trebuie să se poată accesa cu /, /index, /home
+// Cerință 8 si 16(ip ut): Prima pagină (index) trebuie să se poată accesa cu /, /index, /home
 app.get(['/', "/index", "/home"], (req, res) => {
     res.render('pagini/index', { ip: req.ip });
 });
