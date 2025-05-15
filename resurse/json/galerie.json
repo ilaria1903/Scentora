@@ -1,0 +1,150 @@
+{
+  "cale_galerie": "resurse/imagini/galerie",
+  "imagini": [
+    {
+      "fisier": "aqua-allegoria-mandarine-basilic.png",
+      "descriere": "Aqua Allegoria Mandarine Basilic",
+      "luni": ["iunie", "iulie", "august"]
+    },
+    {
+      "fisier": "aqua_di_gio.png",
+      "descriere": "Acqua di Gio",
+      "luni": ["iunie", "iulie", "august"]
+    },
+    {
+      "fisier": "black-opium-over-red.png",
+      "descriere": "Black Opium",
+      "luni": ["septembrie", "octombrie", "noiembrie", "februarie"]
+    },
+    {
+      "fisier": "byredo_bibliotheque.png",
+      "descriere": "Byredo Bibliotheque",
+      "luni": ["octombrie", "noiembrie", "decembrie", "februarie"]
+    },
+    
+    {
+      "fisier": "ck_septembrie.png",
+      "descriere": "CK - Septembrie",
+      "luni": ["septembrie", "octombrie", "noiembrie", "februarie"]
+    },
+    {
+      "fisier": "coco-mademoiselle.png",
+      "descriere": "Coco Mademoiselle",
+      "luni": ["octombrie", "noiembrie", "decembrie","februarie"]
+    },
+    {
+      "fisier": "creed_noiembrie.png",
+      "descriere": "Creed Noiembrie",
+      "luni": ["septembrie", "octombrie", "noiembrie","februarie"]
+    },
+    {
+      "fisier": "creed_white_amber.png",
+      "descriere": "Creed White Amber",
+      "luni": ["octombrie", "noiembrie", "decembrie"]
+    },
+    {
+      "fisier": "dior_jadore.png",
+      "descriere": "Dior Jadore",
+      "luni": ["martie", "aprilie", "mai"]
+    },
+    {
+      "fisier": "dolce_gabbana_iulie.png",
+      "descriere": "Dolce & Gabbana - Iulie",
+      "luni": ["iunie", "iulie", "august"]
+    },
+    {
+      "fisier": "eau-de-soleil-blanc.png",
+      "descriere": "Eau de Soleil Blanc",
+      "luni": ["iunie", "iulie", "august","mai"]
+    },
+    {
+      "fisier": "gucci_octombrie.png",
+      "descriere": "Gucci - Octombrie",
+      "luni": ["septembrie", "octombrie", "noiembrie", "mai"]
+    },
+    {
+      "fisier": "guerlain_aprilie.png",
+      "descriere": "Guerlain - Aprilie",
+      "luni": ["martie", "aprilie", "mai"]
+    },
+   
+    {
+      "fisier": "jimmy_choo-feb.png",
+      "descriere": "Jimmy Choo - Februarie",
+      "luni": ["ianuarie", "februarie", "decembrie"]
+    },
+    {
+      "fisier": "jo_malone_sage_seasalt.png",
+      "descriere": "Jo Malone Sage & Sea Salt",
+      "luni": ["martie", "aprilie", "mai"]
+    },
+    {
+      "fisier": "killian_decembrie.png",
+      "descriere": "Killian - Decembrie",
+      "luni": ["ianuarie", "februarie", "decembrie"]
+    },
+
+     {
+      "fisier": "Hermes_Jardin_sur_le_Nil.png",
+      "descriere": "Hermes Jardin Sur Le Nil",
+      "luni": ["mai", "iunie", "iulie"]
+    },
+
+    {
+      "fisier": "lime-basil-mandarin.png",
+      "descriere": "Lime Basil & Mandarin",
+      "luni": ["iunie", "iulie", "august"]
+    },
+    {
+      "fisier": "MJ_DSY_mai.png",
+      "descriere": "MJ DSY - Mai",
+      "luni": ["mai", "martie", "aprilie"]
+    },
+    {
+      "fisier": "neroli-riviera-tom-ford-neroli-portofino.png",
+      "descriere": "Neroli Portofino",
+      "luni": ["iunie", "iulie", "august", "mai"]
+    },
+    {
+      "fisier": "nina_ricci_iunie.png",
+      "descriere": "Nina Ricci - Iunie",
+      "luni": ["iunie", "iulie", "august", "mai"]
+    },
+    {
+      "fisier": "nishane_ianuarie.png",
+      "descriere": "Nishane - Ianuarie",
+      "luni": ["ianuarie", "februarie", "decembrie"]
+    },
+    
+    {
+      "fisier": "prada_august.png",
+      "descriere": "Prada - August",
+      "luni": ["iunie", "iulie", "august"]
+    },
+    {
+      "fisier": "replica-by-the-fireplace.png",
+      "descriere": "Replica by the Fireplace",
+      "luni": ["octombrie", "noiembrie", "decembrie"]
+    },
+    {
+      "fisier": "shalimar-philtre-de-parfum.png",
+      "descriere": "Shalimar",
+      "luni": ["septembrie", "octombrie", "noiembrie"]
+    },
+    {
+      "fisier": "tobacco_vanille.png",
+      "descriere": "Tobacco Vanille by Tom Ford",
+      "luni": ["octombrie", "noiembrie", "decembrie"]
+    },
+    {
+      "fisier": "versace_crystal_martie.png",
+      "descriere": "Versace Crystal - Martie",
+      "luni": ["martie", "aprilie", "mai"]
+    },
+    {
+      "fisier": "Virgin-Island-1.png",
+      "descriere": "Virgin Island Water by Creed",
+      "luni": ["iunie", "iulie", "august"]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  
+    <%- include("../fragmente/head.ejs")%>
+
+
+   
+</head>
+
+<body>
+ 
+    <%- include("../fragmente/header.ejs")%>
+
+    <main>
+    <h2>Parfumuri</h2>
+    <section class="grid-produse">
+        <% for (let parf of produse) { %>
+            <article class="produs">
+                <h3><%- parf.nume_parfum %></h3>
+                <p>Gen: <%- parf.gen %></p>
+                <p>Tip: <%- parf.tip %></p>
+                <p>Brand: <%- parf.nume_brand %></p>
+                <p>Lansat la: <%- parf.data_lansare.toLocaleDateString() %></p>
+                <% if (parf.descriere) { %><p><i><%- parf.descriere %></i></p><% } %>
+                <% if (parf.poza_principala) { %>
+                    <figure><img src="/resurse/imagini/parfumuri/<%- parf.poza_principala %>" alt="Poza parfum" style="width:40%"/></figure>
+                <% } %>
+            </article>
+        <% } %>
+    </section>
+</main>
+
+    <%- include("../fragmente/footer.ejs")%>
+    </body>
+</html>
+   

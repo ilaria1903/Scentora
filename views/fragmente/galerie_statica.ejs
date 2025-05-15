@@ -1,0 +1,26 @@
+<section id="galerie-statica">
+  <h2>Galerie</h2>
+  <div id="gr">
+    <% const pozitiiGoale = [5, 6]; let indexImg = 0; %>
+    <% for (let i = 0; i < 12; i++) { %>
+      <% if (pozitiiGoale.includes(i)) { %>
+        <div class="gol"></div>
+      <% } else if (indexImg < imagini.length) {
+           const img = imagini[indexImg];
+           const literaIndex = String.fromCharCode(97 + indexImg);
+           indexImg++;
+      %>
+        <figure>
+          <picture>
+            <source srcset="<%= img.fisier_mic %>" media="(max-width: 600px)">
+            <source srcset="<%= img.fisier_mediu %>" media="(max-width: 1024px)">
+            <img src="<%= img.fisier %>" alt="<%= img.alt || img.fisier %>">
+          </picture>
+          <figcaption><%= literaIndex %>. <%= img.descriere || "" %></figcaption>
+        </figure>
+      <% } else { %>
+        <div class="gol"></div>
+      <% } %>
+    <% } %>
+  </div>
+</section>

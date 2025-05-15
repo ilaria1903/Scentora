@@ -1,39 +1,112 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
-  
-    
-    <meta name="keywords" content="parfumuri, recenzii parfumuri, branduri parfumuri, specialiști parfumuri, ingrediente parfumuri, note parfumuri, longevitate parfumuri, proiecție parfumuri">
-    <meta name="description" content="Scentora este o platformă dedicată parfumurilor, oferind recenzii parfumuri, informații despre branduri de parfumuri, note parfumuri și specialiști parfumuri.">
+
+
+    <meta name="keywords"
+        content="parfumuri, recenzii parfumuri, branduri parfumuri, specialiști parfumuri, ingrediente parfumuri, note parfumuri, longevitate parfumuri, proiecție parfumuri">
+    <meta name="description"
+        content="Scentora este o platformă dedicată parfumurilor, oferind recenzii parfumuri, informații despre branduri de parfumuri, note parfumuri și specialiști parfumuri.">
     <title>Scentora - Platformă dedicată parfumurilor</title>
-    <p id="ip-afisat"><b>IP-ul tău: </b><%= ip %></p>
 
 
     <%- include("../fragmente/head.ejs")%>
-   
+
 </head>
 
 <body>
-   
+
+    
+
+    <p id="ip-afisat"><b>IP-ul tău: </b>
+        <%= ip %>
+    </p>
+
 
     <main>
-        <div id="grid-pagina">
-         
-            <button type="button" class="btn btn-primary btn-lg">Stil-1-mare</button>
-            
-    <%- include("../fragmente/header.ejs")%>
-            <section id="zona1" class="zona-cu-duotone">
-                <div class="fundal-zona"></div>
-                <div class="continut-zona">
-        <section id="despre-noi">
-            <h2>Despre Noi</h2>
-            <p>Scentora este dedicată iubitorilor de <strong>parfumuri</strong>, oferind o platformă unde poți explora parfumuri, <strong>recenzii parfumuri</strong>, și <strong>branduri parfumuri</strong> celebre.</p>
-        </section>
 
-        <section id="branduri">
-            <h2>Branduri</h2>
-            <p>Află mai multe despre <strong>brandurile de parfumuri</strong>, fiecare cu propriile <strong>note parfumuri</strong> și <strong>ingrediente parfumuri</strong> care le fac unice. Explorează istoria fiecărui brand și parfumul lor reprezentativ.</p>
-        </section>
+        
+
+        <div id="grid-pagina">
+
+            <button type="button" class="btn btn-primary btn-lg">Stil-1-mare</button>
+
+            <%- include("../fragmente/header.ejs")%>
+                <section id="zona1" class="zona-cu-duotone">
+                    <div class="fundal-zona"></div>
+                    <div class="continut-zona">
+
+                        <section class="zona-scroll-text">
+                            <div class="scroll-text">
+                                <span>✨ Descoperă parfumuri unice, recenzii autentice și povești olfactive ✨</span>
+                            </div>
+                        </section>
+
+
+                        <section id="despre-noi">
+                            <h2>Despre Noi</h2>
+                            <p>Scentora este dedicată iubitorilor de <strong>parfumuri</strong>, oferind o platformă
+                                unde poți explora parfumuri, <strong>recenzii parfumuri</strong>, și <strong>branduri
+                                    parfumuri</strong> celebre.</p>
+                        </section>
+
+                        <section id="branduri">
+                            <h2>Branduri</h2>
+                            <p>Află mai multe despre <strong>brandurile de parfumuri</strong>, fiecare cu propriile
+                                <strong>note parfumuri</strong> și <strong>ingrediente parfumuri</strong> care le fac
+                                unice. Explorează istoria fiecărui brand și parfumul lor reprezentativ.</p>
+                            </section>
+
+                                <div id="galerie-statica">
+                                <h2>Galerie</h2>
+           <div id="gr">
+  <%
+    const pozitiiGoale = [5, 6]; // pozițiile fără imagine (0-based)
+    const imagFiltrate = imagini.filter(img => img.luni && img.luni.includes(luna_curenta));
+
+    let indexImg = 0;
+  %>
+
+  <% for (let i = 0; i < 12; i++) { %>
+    <% if (pozitiiGoale.includes(i)) { %>
+      <div class="gol poz<%= i %>"></div>
+    <% } else if (indexImg < imagFiltrate.length) { 
+         const img = imagFiltrate[indexImg];
+         const literaIndex = String.fromCharCode(97 + indexImg); // a, b, c, ...
+         indexImg++;
+    %>
+      <figure class="poz<%= i %>">
+        <picture>
+          <source srcset="<%= img.fisier_mic %>" media="(max-width: 600px)">
+          <source srcset="<%= img.fisier_mediu %>" media="(max-width: 1024px)">
+          <img src="<%= img.fisier_mediu %>" alt="<%= img.alt || img.descriere %>" title="<%= img.descriere %>">
+        </picture>
+        <figcaption><%= literaIndex %>. <%= img.descriere %></figcaption>
+      </figure>
+    <% } else { %>
+      <div class="gol poz<%= i %>"></div>
+    <% } %>
+  <% } %>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+                                                
+    
+    
+
+
+        
+        
 
         <section id="specialisti">
             <h2>Specialiști</h2>
@@ -51,7 +124,7 @@
                     <a href="https://www.youtube.com/embed/vXoUXAsOCnk" target="ifr-video">Video 2: Mituri despre Parfumuri</a>
                 </div>
                
-            </div>
+           
           </section>
           
 
@@ -131,13 +204,14 @@
 
                 <section id="zona3">
                     <section id="parfumuri">
-                        <h2>Parfumuri Noi</h2>
+                        <h2><a href="/galerie">Parfumuri Noi</a></h2>
                         <p>Descoperă cele mai noi <strong>parfumuri</strong> lansate pe piață. Dacă vrei să găsești cele mai populare sau <strong>parfumuri premium</strong>, Scentora îți oferă toate informațiile de care ai nevoie pentru a face alegerea perfectă. <hr class="linie-stilizata"> Află despre <strong>notele parfumurilor</strong>, <b>ingrediente parfumuri</b>, și <strong>longevitatea parfumurilor</strong>.</p>
                     </section>
                     </section>
 
         <section id="zona4">
             <p><strong>🎉 Cele mai noi parfumuri lansate în ultima lună:</strong></p>
+            <i class="fa-solid fa-exclamation"></i>
     <ul>
         <li>Parfum Fresh Blossom - Brand A</li>
         <li>Parfum Elegant Noir - Brand B</li>
@@ -182,6 +256,7 @@
 
         <section id="intrebari">
             <h2>Întrebări frecvente</h2>
+             <i class="fa-solid fa-question fa-spin"></i>
             <details>
                 <summary>Întrebare 1: Cum funcționează platforma?</summary>
                 <p>Răspuns: Platforma Scentora permite utilizatorilor să exploreze <strong>parfumuri</strong>, să citească <strong>recenzii parfumuri</strong>, să caute <strong>parfumuri</strong> după ingrediente și note și să lase propriile recenzii. Este o platformă interactivă pentru iubitorii de <strong>parfumuri</strong>.</p>
@@ -204,8 +279,11 @@
             <a href="/resurse/imagini/imagine_descarcat.jpg" download="parfumuri.jpg">Descarcă Parfumuri.jpg</a>
         </section>
     </section>
+     </div>
     </main>
     <%- include("../fragmente/footer.ejs")%>
+
+    
     
 </div>
 </body>

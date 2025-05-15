@@ -1,9 +1,33 @@
-// Cerință: Se va crea în rădăcina proiectului un fișier index.js
+ // Cerință: Se va crea în rădăcina proiectului un fișier index.js
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sharp = require("sharp");
 const sass=require("sass");
+const pg=require("pg");
+
+
+/*Etapa 6*/
+const Client=pg.Client;
+
+client=new Client({
+    database:"proiect",
+    user:"alexia",
+    password:"Cosminut22",
+    host:"localhost",
+    port:5432
+})
+
+client.connect()
+client.query("SELECT * FROM Parfumuri", function(err, rezultat) {
+    console.log(err);
+    console.log(rezultat.rows);
+})
+
+client.query("SELECT * FROM unnest(enum_range(NULL::tip_brand))", function(err, rezultat) {
+    console.log(err);
+    console.log(rezultat.rows);
+})
 //const pg=require("pg");
 
 //Postgres
@@ -33,6 +57,7 @@ app.set('trust proxy', true);
 
 // Cerință: Se va crea o variabilă globală numită obGlobal
 obGlobal = { obErori: null,
+    obImagini:null,
     folderScss:path.join(__dirname,"resurse/scss"),
     folderCss:path.join(__dirname,"resurse/scss"),
     folderBackup:path.join(__dirname, "backup")
@@ -132,6 +157,47 @@ function initErori() {
 }
 initErori();
 
+
+/*Etapa 5:galerie statica*/
+function initImagini(){
+    /*folderul proiectului la care concatenez fisierul json*/
+    var continut= fs.readFileSync(path.join(__dirname,"resurse/json/galerie.json")).toString("utf-8");
+/*parse:transforma sir in obiect*/
+    obGlobal.obImagini=JSON.parse(continut);
+    let vImagini=obGlobal.obImagini.imagini;/*info imagini*/
+
+    let caleAbs=path.join(__dirname,obGlobal.obImagini.cale_galerie);
+    let caleAbsMediu=path.join(__dirname,obGlobal.obImagini.cale_galerie, "mediu");/*sa pun imag de dim mediu*/
+    let caleAbsMic = path.join(__dirname, obGlobal.obImagini.cale_galerie, "mic");
+
+    if (!fs.existsSync(caleAbsMediu))
+        fs.mkdirSync(caleAbsMediu);
+
+     if (!fs.existsSync(caleAbsMic)) fs.mkdirSync(caleAbsMic);
+
+
+    //for (let i=0; i< vErori.length; i++ )
+    for (let imag of vImagini){
+        [numeFis, ext]=imag.fisier.split(".");
+        let caleFisAbs=path.join(caleAbs,imag.fisier);
+
+        let caleFisMediuAbs=path.join(caleAbsMediu, numeFis+".webp");
+        sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);/*salveaza in calea catre fisierul mediu*/
+        imag.fisier_mediu=path.join("/", obGlobal.obImagini.cale_galerie, "mediu",numeFis+".webp" )
+       
+       let caleFisMicAbs = path.join(caleAbsMic, numeFis + ".webp");
+        sharp(caleFisAbs).resize(150).toFile(caleFisMicAbs);
+        imag.fisier_mic = path.join("/", obGlobal.obImagini.cale_galerie, "mic", numeFis + ".webp");
+       
+        imag.fisier=path.join("/", obGlobal.obImagini.cale_galerie, imag.fisier )
+        
+    }
+    console.log(obGlobal.obImagini)
+}
+initImagini();
+
+
+
 // Cerință t4: Se va crea o funcție de afișare a erorilor afișareEroare()
 function afisareEroare(res, identificator, titlu, text, imagine) {
     let eroare = null;
@@ -172,15 +238,41 @@ app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
 });
 
-// Cerință 8 si 16(ip ut): Prima pagină (index) trebuie să se poată accesa cu /, /index, /home
-app.get(['/', "/index", "/home"], (req, res) => {
-    res.render('pagini/index', { ip: req.ip });
+
+app.get("/galerie", function (req, res) {
+  const vect_luni = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie"];
+  const luna_curenta = vect_luni[(new Date()).getMonth()];
+  res.render("pagini/galerie", {
+    luna_curenta: luna_curenta,
+    imagini: obGlobal.obImagini.imagini
+  });
 });
+
+
+
+// Cerință 8 si 16(ip ut): Prima pagină (index) trebuie să se poată accesa cu /, /index, /home
+app.get(['/', '/index', '/home'], (req, res) => {
+    const vect_luni = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie","august","septembrie","octombire","noiembrie","decembrie"];
+    const d = new Date();
+    /*const luna_curenta = vect_luni[(new Date()).getMonth()];*/
+    const luna_curenta = "februarie";
+
+
+
+    res.render('pagini/index', {
+        ip: req.ip,
+        luna_curenta: luna_curenta,
+        imagini: obGlobal.obImagini.imagini
+    });
+});
+
 
 // Cerință: Pagină suplimentară accesibilă prin meniu
 app.get("/despre", function (req, res) {
     res.render("pagini/despre");
 });
+
+
 
 // Test GET simplu
 app.get("/cerere", function (req, res) {
@@ -200,6 +292,72 @@ app.get("/abc", function (req, res, next) {
 
 
 //app.get produse
+
+
+
+/*Etapa 6*/
+app.get("/exploreaza", function(req, res){
+    console.log(req.query);
+
+    var conditieQuery = ""; // (poate fi completat cu filtre mai târziu)
+    var valori = [];
+
+    var tip = req.query.tip;
+
+    var queryOptiuni = "";
+    if (tip === "parfumuri") {
+        queryOptiuni = "SELECT id_brand, nume_brand FROM Branduri";
+    } else {
+        queryOptiuni = ""; // alte tipuri nu au opțiuni speciale
+    }
+
+    client.query(queryOptiuni, function(err, rezOptiuni){
+        console.log(rezOptiuni);
+
+        var queryProduse = "";
+        if (tip === "branduri") {
+            queryProduse = "SELECT * FROM Branduri";
+        }
+        else if (tip === "specialisti") {
+            queryProduse = `
+                SELECT s.*, b.nume_brand 
+                FROM Specialisti s 
+                JOIN Branduri b ON s.id_brand = b.id_brand
+            `;
+        }
+        else if (tip === "familiinote") {
+            queryProduse = "SELECT * FROM NoteParfumuri";
+        }
+        else if (tip === "parfumuri") {
+            queryProduse = `
+                SELECT p.*, b.nume_brand, i.cale_imagine AS poza_principala
+FROM Parfumuri p
+JOIN Branduri b ON p.id_brand = b.id_brand
+LEFT JOIN Imagini_Parfumuri i ON p.id_parfum = i.id_parfum AND i.este_principala = true
+
+                ${conditieQuery}
+            `;
+        }
+        else {
+            afisareEroare(res, 404, "Tip necunoscut în explorare.");
+            return;
+        }
+
+        client.query(queryProduse, valori, function(err, rez){
+            if (err) {
+                console.log(err);
+                afisareEroare(res, 2);
+            }
+            else {
+                // Randează pagina corespunzătoare în funcție de tip
+                res.render(`pagini/exploreaza_${tip}`, {
+                    produse: rez.rows,
+                    optiuni: rezOptiuni?.rows || []
+                });
+            }
+        });
+    });
+});
 
 
 // Cerință: Eroare 403 dacă se accesează direct o cale din /resurse fără fișier

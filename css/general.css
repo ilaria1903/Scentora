@@ -106,6 +106,8 @@ header { grid-area: header; }
 #zona6 { grid-area: six; }
 #zona7 { grid-area: seven; }
 #zona8 { grid-area: eight; }
+
+
 footer { grid-area: footer; }
 
 /*  TASK 4 - MEDIA RESPONSIVE - IMAGINI ȘI VIDEO */
@@ -316,7 +318,7 @@ ul.meniu li ul li a {
 }
 
 
-/* Ascunde watermark-ul în modul normal (pe ecran) */
+/* Ascund watermark-ul în modul normal (pe ecran) */
 .watermark {
     display: none;
   }
@@ -382,7 +384,7 @@ ul.meniu li ul li a {
 .continut-zona {
     position: relative;
     z-index: 2;
-    padding: 2rem; /* adaugi padding ca să nu stea lipit */
+    padding: 2rem; /*  padding ca să nu stea lipit */
 }
 
 
@@ -407,4 +409,172 @@ ul.meniu li ul li a {
         transparent 95%,
         transparent 100%
     );
+}
+
+
+/*Etapa 5 background fix+schimbare automata img*/
+.sectiune-background-schimbator {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    animation: schimbare-bg 15s infinite alternate;
+    transition: background-image 1s ease-in-out;
+  }
+  
+  @keyframes schimbare-bg {
+    0% {
+      background-image: url('/resurse/imagini/bg1.jpg');
+    }
+    50% {
+      background-image: url('/resurse/imagini/bg2.jpg');
+    }
+    100% {
+      background-image: url('/resurse/imagini/bg3.jpg');
+    }
+  }
+
+
+  /*Etapa 5:text care se plimba orizontal*/
+  .zona-scroll-text {
+    overflow: hidden;/*ascunde marginile în afara secțiunii.*/
+    width: 100%;
+    background-color: var(--culoare-accent); 
+    padding: 10px 0;
+    position: relative;
+  }
+  
+  .scroll-text span {
+    display: inline-block;
+    white-space: nowrap; /* textul rămâne pe o singură linie.*/
+    padding-left: 100%;
+    animation: scroll-horizontal 20s linear infinite;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+  }
+  
+  /*Etapa 5 galerie statica*/
+/* === GRID MARE === */
+
+
+
+#gr {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1em;
+  padding: 1em;
+}
+
+#gr figure {
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  transition: transform 1.25s ease;
+}
+
+
+#gr .gol {
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* pătrat  */
+  overflow: hidden;
+}
+
+#gr figure img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+   transition: transform 1.25s ease;
+  transform-origin: bottom center; /* foarte important pentru efectul corect */
+}
+
+#gr figure figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f5dada;
+  color: #000;
+  font-size: 0.9em;
+  padding: 0.5em 0;
+  transition: all 1.25s ease;
+  z-index: 2;
+}
+
+#gr figcaption {
+  position: absolute;
+  bottom: 0.3em;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+}
+/*  
+/* Poziționare fixă pe grilă pentru fiecare din cele 12 poziții (poz0 – poz11) */
+.poz0  { grid-column: 1 !important; grid-row: 1 !important; }
+.poz1  { grid-column: 2 !important; grid-row: 1 !important; }
+.poz2  { grid-column: 3 !important; grid-row: 1 !important; }
+.poz3  { grid-column: 4 !important; grid-row: 1 !important; }
+
+.poz4  { grid-column: 1 !important; grid-row: 2 !important; }
+.poz5  { grid-column: 2 !important; grid-row: 2 !important; }
+.poz6  { grid-column: 3 !important; grid-row: 2 !important; }
+.poz7  { grid-column: 4 !important; grid-row: 2 !important; }
+
+.poz8  { grid-column: 1 !important; grid-row: 3 !important; }
+.poz9  { grid-column: 2 !important; grid-row: 3 !important; }
+.poz10 { grid-column: 3 !important; grid-row: 3 !important; }
+.poz11 { grid-column: 4 !important; grid-row: 3 !important; } 
+
+
+ 
+
+/* === ECRAN MEDIU === */
+@media screen and (max-width: 900px) {
+  #gr {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+
+}
+
+/* === ECRAN MIC === */
+@media screen and (max-width: 600px) {
+  #gr {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Tranziție la hover */
+#gr figure:hover img {
+  transform: translateY(-15%) scale(1.3); /* impinge in sus si mareste */
+}
+
+#gr figure:hover figcaption {
+  background-color: #021859; 
+  color: white;
 }

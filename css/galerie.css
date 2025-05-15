@@ -1,0 +1,235 @@
+:root {
+    --culoare-fundal: #FDF6E4;     
+    --culoare-accent: #447EF2;     
+    --culoare-header: #915362;     
+    --culoare-footer: #021859;     
+    --culoare-sectiuni: #91615D;   
+    --font-size-text: 1.2rem;
+    --padding-text: 30px;
+}
+
+
+/*  TASK 1 - LAYOUT GENERAL - FONT ȘI DIMENSIUNI */
+html {
+    font-size: 16px;
+    transition: font-size 0.5s ease;
+}
+body {
+    font-family: 'Playfair Display', serif;
+    --spatiere-pagina: 80px;
+
+   
+    --culoare-background: var(--culoare-fundal);
+    --culoare-text: var(--culoare-footer);
+    --culoare-border: var(--culoare-accent);
+    --culoare-highlight: var(--culoare-header);
+    --culoare-sectiune: var(--culoare-sectiuni);
+}
+main {
+    padding-left: var(--spatiere-pagina);
+    padding-right: var(--spatiere-pagina);
+}
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+p, li, td, th, a, summary, details, section {
+    font-size: var(--font-size-text);
+    line-height: 1.5;
+}
+
+/*  TASK 2 - DESIGN RUDIMENTAR - HEADER ȘI FOOTER CU STILIZARE */
+header, footer {
+    border: 2px solid var(--culoare-accent);
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+header {
+    background-color: var(--culoare-header);
+    position: relative;
+  overflow: visible;
+  z-index: 100;
+    color: black;
+}
+
+nav {
+    position: relative;
+    z-index: 200;
+  }
+
+footer {
+    background-color: var(--culoare-footer);
+    color: white;
+}
+
+#link-top {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    width: 6rem;
+    height: 6rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#cerc {
+    width: 100%;
+    height: 100%;
+    border: 5px dashed var(--culoare-accent);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--culoare-sectiuni), var(--culoare-fundal) 50%, var(--culoare-sectiuni));
+    transition: transform 500ms ease, opacity 500ms ease;
+    opacity: 0.5;
+    box-sizing: border-box;
+}
+#link-top:hover #cerc {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+#triunghi {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--culoare-footer);
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+}
+
+
+ul.meniu li ul li {
+    padding: 0;
+    height: var(--inaltime-meniu);
+    line-height: var(--inaltime-meniu);
+    text-align: center;
+}
+
+ul.meniu li ul {
+    width: var(--latime-buton);
+}
+
+ul.meniu li ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: var(--inaltime-meniu);
+    text-align: center;
+}
+
+
+/*Etapa 5 galerie statica*/
+/* === GRID MARE === */
+
+
+
+#gr {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1em;
+  padding: 1em;
+}
+
+#gr figure {
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  transition: transform 1.25s ease;
+}
+
+
+#gr .gol {
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* pătrat perfect */
+  overflow: hidden;
+}
+
+#gr figure img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+   transition: transform 1.25s ease;
+  transform-origin: bottom center; /* foarte important pentru efectul corect */
+}
+
+#gr figure figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f5dada;
+  color: #000;
+  font-size: 0.9em;
+  padding: 0.5em 0;
+  transition: all 1.25s ease;
+  z-index: 2;
+}
+
+#gr figcaption {
+  position: absolute;
+  bottom: 0.3em;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+}
+ 
+/* Poziționare fixă pe grilă pentru fiecare din cele 12 poziții (poz0 – poz11) */
+/*.poz0  { grid-column: 1 !important; grid-row: 1 !important; }
+.poz1  { grid-column: 2 !important; grid-row: 1 !important; }
+.poz2  { grid-column: 3 !important; grid-row: 1 !important; }
+.poz3  { grid-column: 4 !important; grid-row: 1 !important; }
+
+.poz4  { grid-column: 1 !important; grid-row: 2 !important; }
+.poz5  { grid-column: 2 !important; grid-row: 2 !important; }
+.poz6  { grid-column: 3 !important; grid-row: 2 !important; }
+.poz7  { grid-column: 4 !important; grid-row: 2 !important; }
+
+.poz8  { grid-column: 1 !important; grid-row: 3 !important; }
+.poz9  { grid-column: 2 !important; grid-row: 3 !important; }
+.poz10 { grid-column: 3 !important; grid-row: 3 !important; }
+.poz11 { grid-column: 4 !important; grid-row: 3 !important; } */
+
+
+
+
+/* === ECRAN MEDIU === */
+@media screen and (max-width: 900px) {
+  #gr {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+
+}
+
+/* === ECRAN MIC === */
+@media screen and (max-width: 600px) {
+  #gr {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Tranziție la hover */
+#gr figure:hover img {
+  transform: translateY(-15%) scale(1.3); /* împingi sus și mărești */
+}
+
+#gr figure:hover figcaption {
+  background-color: #021859; /* tu alegi culoarea */
+  color: white;
+}
